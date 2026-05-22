@@ -3,130 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>FriendCast — 友達とつくる秘密のPodcast</title>
-  <meta name="description" content="FriendCastは、ラジオブースの空気感をまとった招待制Podcast。写真・画像・短文ポストで、仲間だけの音声タイムラインをつくる。" />
+  <title>FriendCast | Closed Podcast, Coming Soon</title>
+  <meta name="description" content="FriendCastは、友達とだけつながるクローズドPodcastアプリ。ラジオブースの空気感をまとった、間もなくリリースのWeb体験。" />
+  <meta name="theme-color" content="#0a0d16" />
   <style>
     :root {
-      --bg: #090b12;
-      --bg-soft: #121626;
-      --card: rgba(255,255,255,.08);
-      --line: rgba(255,255,255,.14);
-      --text: #f3f6ff;
-      --sub: #b8c2e2;
-      --acc: linear-gradient(120deg,#ff7fbb,#7e90ff 48%,#58dcff);
-      --mint: #76f2d4;
-      --radius: 22px;
+      --bg0:#070910;
+      --bg1:#0f1422;
+      --line:rgba(255,255,255,.15);
+      --txt:#f6f8ff;
+      --sub:#b4bedc;
+      --acc:linear-gradient(120deg,#ff8dc7 0%,#8e8eff 45%,#59d8ff 100%);
+      --card:rgba(255,255,255,.07);
+      --radius:24px;
+      --shadow:0 18px 45px rgba(0,0,0,.45);
     }
-    * { box-sizing:border-box; }
-    body {
-      margin:0; color:var(--text); background: radial-gradient(60vw 60vw at 90% -10%, rgba(130,90,255,.28), transparent 70%),
-      radial-gradient(70vw 70vw at 10% 90%, rgba(65,200,255,.18), transparent 70%), var(--bg);
-      font-family: Inter, "Noto Sans JP", "Yu Gothic", sans-serif;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;color:var(--txt);font-family:Inter,"Noto Sans JP","Yu Gothic",sans-serif;background:var(--bg0)}
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(60vw 55vw at 88% 0%, rgba(129,92,255,.28), transparent 65%),
+        radial-gradient(70vw 70vw at 0% 95%, rgba(62,207,255,.2), transparent 60%),
+        linear-gradient(180deg,var(--bg1),var(--bg0));
     }
-    .container { width:min(1140px, calc(100% - 2rem)); margin:auto; }
-    .nav { position:sticky; top:0; z-index:20; backdrop-filter: blur(14px); background: rgba(9,11,18,.7); border-bottom:1px solid var(--line); }
-    .nav-inner { min-height:64px; display:flex; justify-content:space-between; align-items:center; }
-    .brand { font-weight:800; letter-spacing:.06em; }
-    .brand b { background:var(--acc); -webkit-background-clip:text; color:transparent; }
-    .nav-links a { color:var(--sub); text-decoration:none; margin-left:1rem; font-size:.9rem; }
-    section { padding:4.8rem 0; }
+    .texture{position:fixed;inset:0;pointer-events:none;opacity:.17;background-image:radial-gradient(rgba(255,255,255,.45) .5px,transparent .5px);background-size:4px 4px;mask-image:linear-gradient(180deg,#000,transparent 85%)}
+    .container{width:min(1140px,calc(100% - 2rem));margin:auto}
+    .nav{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(8,10,17,.72);border-bottom:1px solid var(--line);z-index:10}
+    .nav-inner{min-height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:800;letter-spacing:.06em}
+    .brand span{background:var(--acc);-webkit-background-clip:text;color:transparent}
+    .pill{font-size:.72rem;border:1px solid var(--line);border-radius:999px;padding:.35rem .65rem;color:#d7ddf4}
 
-    .hero { display:grid; gap:2rem; align-items:center; }
-    .eyebrow { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:.35rem .75rem; font-size:.75rem; color:#d6dbef; }
-    h1 { font-size:clamp(2rem,6vw,4rem); margin:.8rem 0; line-height:1.15; }
-    .grad { background:var(--acc); -webkit-background-clip:text; color:transparent; }
-    .lead { color:var(--sub); line-height:1.9; max-width:60ch; }
-    .btns { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.3rem; }
-    .btn { padding:.8rem 1.2rem; border-radius:999px; border:1px solid var(--line); color:white; text-decoration:none; font-weight:700; }
-    .btn.primary { background:var(--acc); color:#071019; border:none; }
+    main{padding:3.5rem 0 4rem}
+    .hero{display:grid;gap:1.4rem;align-items:center}
+    h1{font-size:clamp(2.1rem,6.2vw,4.2rem);line-height:1.12;margin:.3rem 0}
+    .grad{background:var(--acc);-webkit-background-clip:text;color:transparent}
+    .lead{color:var(--sub);line-height:1.95;max-width:58ch}
+    .cta{margin-top:.8rem;display:flex;gap:.7rem;flex-wrap:wrap}
+    .btn{padding:.82rem 1.2rem;border:1px solid var(--line);border-radius:999px;color:#fff;text-decoration:none;font-weight:700;background:rgba(255,255,255,.03)}
+    .btn.primary{background:var(--acc);border:none;color:#08111d}
 
-    .studio-grid { display:grid; gap:1rem; }
-    .photo {
-      min-height:170px; border-radius:18px; overflow:hidden; position:relative; border:1px solid var(--line);
-      background-size:cover; background-position:center;
-    }
-    .photo::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent, rgba(0,0,0,.55)); }
-    .photo span { position:absolute; left:.8rem; bottom:.7rem; z-index:2; font-size:.85rem; }
+    .frame{margin-top:2rem;border:1px solid var(--line);border-radius:var(--radius);padding:1rem;background:var(--card);box-shadow:var(--shadow)}
+    .grid{display:grid;gap:1rem}
+    .photo{position:relative;min-height:180px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.18);background-size:cover;background-position:center}
+    .photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.56))}
+    .photo b{position:absolute;left:.8rem;bottom:.75rem;z-index:1;font-size:.86rem}
+    .a{background-image:url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1400&q=80')}
+    .b{background-image:url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1400&q=80')}
+    .c{background-image:url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1400&q=80')}
 
-    .booth-a { background-image:url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1200&q=80'); }
-    .booth-b { background-image:url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80'); }
-    .booth-c { background-image:url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80'); }
+    .notice{margin-top:1rem;border:1px solid rgba(120,211,255,.35);background:linear-gradient(90deg,rgba(89,216,255,.18),rgba(148,142,255,.1));border-radius:14px;padding:.85rem 1rem;color:#dcecff}
 
-    .timeline { border:1px solid var(--line); border-radius:var(--radius); background:rgba(255,255,255,.04); overflow:hidden; }
-    .timeline-head { padding:1rem; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; }
-    .post { display:grid; grid-template-columns:40px 1fr; gap:.75rem; padding:1rem; border-bottom:1px solid rgba(255,255,255,.08); }
-    .avatar { width:40px; height:40px; border-radius:50%; background:linear-gradient(140deg,#b78cff,#62cbff); }
-    .post p { margin:.45rem 0 0; color:var(--sub); line-height:1.65; }
-    .mini-player { margin-top:.7rem; border:1px solid rgba(255,255,255,.15); border-radius:14px; padding:.7rem; background:rgba(8,14,28,.78); }
-    .bar { height:4px; border-radius:99px; margin-top:.55rem; background:linear-gradient(90deg,var(--mint) 37%, rgba(255,255,255,.18) 37%); }
+    .future{margin-top:2.2rem;display:grid;gap:1rem}
+    .card{border:1px solid var(--line);border-radius:16px;padding:1rem;background:rgba(255,255,255,.04)}
+    .card p{margin:.5rem 0 0;color:var(--sub);line-height:1.8}
 
-    .cards { display:grid; gap:1rem; margin-top:1.4rem; }
-    .card { border:1px solid var(--line); border-radius:18px; padding:1rem; background:var(--card); }
-    .card p { color:var(--sub); line-height:1.75; }
-
-    footer { border-top:1px solid var(--line); padding:1.4rem 0 2rem; text-align:center; color:#a8b2d4; }
-    @media (min-width: 900px) {
-      .hero { grid-template-columns: 1.05fr .95fr; }
-      .studio-grid { grid-template-columns: repeat(3,1fr); }
-      .cards { grid-template-columns: repeat(3,1fr); }
+    footer{margin-top:3rem;padding:1.6rem 0 2rem;border-top:1px solid var(--line);text-align:center;color:#a8b2d1;font-size:.9rem}
+    @media (min-width:900px){
+      .hero{grid-template-columns:1.02fr .98fr;gap:2rem}
+      .grid{grid-template-columns:repeat(3,1fr)}
+      .future{grid-template-columns:repeat(3,1fr)}
     }
   </style>
 </head>
 <body>
+  <div class="texture" aria-hidden="true"></div>
   <nav class="nav">
     <div class="container nav-inner">
-      <div class="brand"><b>FriendCast</b> / Private Social Podcast</div>
-      <div class="nav-links">
-        <a href="#studio">Studio</a><a href="#timeline">Timeline UI</a><a href="#vision">Vision</a>
-      </div>
+      <div class="brand"><span>FriendCast</span></div>
+      <span class="pill">Closed Podcast App / Coming Soon</span>
     </div>
   </nav>
 
   <main class="container">
     <section class="hero">
       <div>
-        <span class="eyebrow">Invite-only Podcast × Stylish Radio Booth</span>
-        <h1>声と写真でつながる<br><span class="grad">FriendCast</span></h1>
-        <p class="lead">FriendCastは、友達だけに公開できるPodcast空間。ラジオブースっぽい雰囲気の写真・画像を差し込みながら、あとでTwitterライクなタイムラインUIへ育てられる構成を意識したデザインです。</p>
-        <div class="btns"><a class="btn primary" href="#timeline">UIを見る</a><a class="btn" href="#vision">コンセプト</a></div>
+        <span class="pill">Invite Only • Private by Design</span>
+        <h1>ラジオブースの空気でつながる、<br><span class="grad">FriendCast</span></h1>
+        <p class="lead">FriendCastは、友達同士だけで楽しむクローズドなPodcast体験。今は“世界観”を先に公開中。Twitterライクなタイムライン型Podcast Webアプリとして、まもなくリリース予定です。</p>
+        <div class="cta">
+          <a class="btn primary" href="#">まもなくリリース</a>
+          <a class="btn" href="#future">Future UI Concept</a>
+        </div>
+        <div class="notice">🎙️ 現在は先行準備フェーズです。公開時は「招待制」でスタートします。</div>
       </div>
-      <div class="timeline" id="timeline">
-        <div class="timeline-head"><strong>FriendCast Feed</strong><small style="color:#9fb0dc;">Friends only</small></div>
-        <article class="post">
-          <div class="avatar"></div>
-          <div><strong>@mio</strong><p>今日の収録ブース、照明が最高。EP.24アップした！</p><div class="mini-player">🎙 EP.24 深夜ブース雑談<div class="bar"></div></div></div>
-        </article>
-        <article class="post">
-          <div class="avatar"></div>
-          <div><strong>@ren</strong><p>次回は「友達限定スペース」でライブ収録しよう。写真も添付できるUIいい感じ！</p></div>
-        </article>
-        <article class="post" style="border-bottom:none;">
-          <div class="avatar"></div>
-          <div><strong>@sora</strong><p>将来的にRTっぽい再シェアより、"close repost"で内輪だけ循環させたい。</p></div>
-        </article>
+
+      <div class="frame" aria-label="radio booth mood board">
+        <div class="grid">
+          <article class="photo a"><b>Neon Booth Mood</b></article>
+          <article class="photo b"><b>Microphone & Desk</b></article>
+          <article class="photo c"><b>On-Air Night Session</b></article>
+        </div>
       </div>
     </section>
 
-    <section id="studio">
-      <h2>ラジオブース風の写真・画像セクション</h2>
-      <p class="lead">トップで「空気感」を見せるため、ヒーロー直下にビジュアルを並べる想定です。</p>
-      <div class="studio-grid">
-        <div class="photo booth-a"><span>Neon Booth</span></div>
-        <div class="photo booth-b"><span>Mic & Desk</span></div>
-        <div class="photo booth-c"><span>On Air Mood</span></div>
-      </div>
-    </section>
-
-    <section id="vision">
-      <h2>TwitterライクUIへの発展を想定した設計</h2>
-      <div class="cards">
-        <article class="card"><h3>投稿単位 = Podcastスレッド</h3><p>1ポストに短文・画像・音声プレイヤーを同居。返信をぶら下げる構造で会話を継続。</p></article>
-        <article class="card"><h3>公開範囲を先に選ぶ</h3><p>「全体公開」ではなく、Friend List / Room単位をデフォルトにし、内輪前提の体験を維持。</p></article>
-        <article class="card"><h3>拡散より関係性</h3><p>Like/再生数を弱め、誰が最後まで聴いたか・誰が声で返したかを主指標にする。</p></article>
-      </div>
+    <section id="future" class="future">
+      <article class="card">
+        <h3>Closed Timeline</h3>
+        <p>Twitterのように流れるUIで、投稿は友達やルームに限定表示。拡散ではなく“近さ”を重視。</p>
+      </article>
+      <article class="card">
+        <h3>Voice-first Post</h3>
+        <p>短文＋画像＋音声を1投稿に。聴いて、返して、会話が続くPodcastスレッド体験へ。</p>
+      </article>
+      <article class="card">
+        <h3>Release Soon</h3>
+        <p>アプリ本体はこれから制作予定。まずはFriendCastの世界観を先行公開しています。</p>
+      </article>
     </section>
   </main>
 
-  <footer>FriendCast — 友達とつくるクローズドPodcast空間。</footer>
+  <footer>
+    FriendCast — Closed Podcast for Friends. Coming Soon.
+  </footer>
 </body>
 </html>
