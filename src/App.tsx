@@ -63,6 +63,26 @@ export default function App() {
           </div>
         </section>
 
+
+        <section className="section voice-reply card">
+          <div className="voice-reply-head">
+            <p className="voice-reply-kicker">VOICE REPLY FEATURE</p>
+            <h2>返信も、声で返せる。</h2>
+            <p>テキストだけじゃ伝わらない温度感も、声ならそのまま届く。friendcastなら、投稿だけでなく返信も音声で残せます。</p>
+          </div>
+          <p>friendcastは、音声投稿だけのSNSではありません。気になった投稿には、テキストでも、声でも返信できます。ちょっとしたリアクション、感想、励まし、雑談。文字にすると硬くなる言葉も、声ならやわらかく届きます。</p>
+          <div className="voice-reply-visual" aria-hidden="true">
+            <div className="reply-bubble incoming">投稿を聴いたよ、元気出た！</div>
+            <div className="reply-player"><span className="reply-icon">🎤↩︎</span><div className="wave">{Array.from({ length: 12 }).map((_, i) => <span key={i} style={{ animationDelay: `${i * 0.1}s` }} />)}</div></div>
+            <div className="reply-bubble outgoing">ありがとう！返信も声で送るね。</div>
+          </div>
+          <ul className="voice-points">
+            <li>投稿に音声で返信できる</li>
+            <li>テキストでは伝わりにくい温度感が届く</li>
+            <li>相互フォローの相手だけに安心して返せる</li>
+          </ul>
+        </section>
+
         <section className="section card"><h2>friendcastとは</h2><p>friendcastは、友達や仲間にだけ声を届けられる、クローズドな音声SNSです。テキストでも、声でも、近い距離の人たちと安心して会話できます。</p><p>広く拡散するためのSNSではなく、「この人たちにだけ届けたい」を大事にするSNSです。</p></section>
         <section className="section card"><h2>なぜ普通のSNSではなくfriendcastなのか</h2><p>普通のSNSは便利だけど、見られたくない人にまで届きすぎる。バズることを前提にすると、気軽な近況や本音の声を出しづらくなる。</p><p className="quote">「拡散」より「関係性」。「バズ」より「ちゃんと届く」。「フォロワー数」より「声を届けたい相手」。</p></section>
 
