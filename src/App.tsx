@@ -26,7 +26,15 @@ export default function App() {
       <main className="container">
         <section className="hero section">
           <div className="hero-left fade-in">
-            <p className="brand"><span>◌</span> friendcast</p>
+            <div className="hero-banner-wrap">
+              <img
+                className="hero-banner"
+                src={`${import.meta.env.BASE_URL}friendcast-logo-banner.jpeg`}
+                alt="friendcast ロゴバナー"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
             <h1>声が届く相手を、ちゃんと選べる。</h1>
             <p className="lead">friendcastは、相互フォローの相手だけにテキストと音声を届けられる、クローズド音声SNSです。バズるためではなく、本当に届けたい人とだけ、安心してつながるための場所です。</p>
             <div className="badge-row">
