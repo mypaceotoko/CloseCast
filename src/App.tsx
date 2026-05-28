@@ -33,8 +33,8 @@ export default function App() {
               {['相互フォロー制', '音声投稿対応', 'クローズドSNS', 'テスター募集中'].map((b) => <span key={b} className="badge">{b}</span>)}
             </div>
             <div className="cta-row">
-              <button aria-label="friendcastを見てみる" className="btn primary">friendcastを見てみる</button>
-              <button aria-label="コンセプトを見る" className="btn ghost">コンセプトを見る</button>
+              <a aria-label="friendcastを開く" className="btn primary" href="https://friendcast-tau.vercel.app/" target="_blank" rel="noopener noreferrer">friendcastを開く</a>
+              <a aria-label="テスターとして使ってみる" className="btn ghost" href="https://friendcast-tau.vercel.app/" target="_blank" rel="noopener noreferrer">テスターとして使ってみる</a>
             </div>
           </div>
           <div className="hero-right">
@@ -68,7 +68,7 @@ export default function App() {
 
         <section className="section card"><h2>開発中の機能・今後のアップデート</h2><p>friendcastは現在開発中です。テスターのフィードバックを受けながら、少しずつ改善しています。</p><ul className="updates"><li>通知機能</li><li>コメントへの返信・いいね</li><li>招待コード改善</li><li>音声プレイヤー改善</li><li>PWA対応</li><li>より強いプライバシー設計</li><li>スマホ操作の改善</li><li>テスター向け導線の整理</li></ul></section>
 
-        <section className="section cta card"><h2>friendcastを、一緒に育ててくれる人へ。</h2><p>friendcastはまだ開発中のサービスです。実際に使ってくれる人の声をもとに、使いやすさや安心感を少しずつ磨いています。</p><div className="cta-row"><button className="btn primary">テスターとして使ってみる</button><button className="btn ghost">開発者にフィードバックする</button></div><p className="small">現在はテスト公開中です。予告なく仕様が変わる場合があります。</p></section>
+        <section className="section cta card"><h2>friendcastを、一緒に育ててくれる人へ。</h2><p>friendcastはまだ開発中のサービスです。実際に使ってくれる人の声をもとに、使いやすさや安心感を少しずつ磨いています。</p><div className="cta-row"><a className="btn primary" href="https://friendcast-tau.vercel.app/" target="_blank" rel="noopener noreferrer">テスターとして使ってみる</a><a className="btn ghost" href="https://friendcast-tau.vercel.app/" target="_blank" rel="noopener noreferrer">friendcastを開く</a></div><p className="small">現在はテスト公開中です。予告なく仕様が変わる場合があります。</p></section>
       </main>
       <footer className="footer">friendcast<br />Closed voice social network<br />© 2026 mypaceotoko<div className="small">Built with AI-assisted development.</div></footer>
     </div>
