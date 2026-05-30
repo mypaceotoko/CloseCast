@@ -85,10 +85,11 @@ function App() {
               />
             </figure>
             <p className="brand-kicker">friendcast</p>
-            <h1 id="hero-title">
-              親しい人にだけ届ける、
-              <br />
-              声のタイムライン。
+            <h1 id="hero-title" className="hero-title">
+              <span className="hero-title-line">
+                <span className="hero-title-phrase">親しい人にだけ</span><span className="hero-title-phrase">届ける、</span>
+              </span>
+              <span className="hero-title-line">声のタイムライン。</span>
             </h1>
             <p className="lead">
               バズらない。広がりすぎない。
@@ -256,7 +257,9 @@ function App() {
         <section className="section final-cta" aria-labelledby="final-cta-title">
           <div className="cta-card card">
             <span className="tester-ribbon">テスター募集中</span>
-            <h2 id="final-cta-title">あなたの声を、届く人へ。</h2>
+            <h2 id="final-cta-title" className="final-cta-title">
+              <span>あなたの声を、</span><span>届く人へ。</span>
+            </h2>
             <p>親しい人にだけ、声や文章を残せる場所を試してみませんか。</p>
             <div className="cta-row centered-row">
               <a
