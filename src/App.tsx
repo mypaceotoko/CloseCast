@@ -1,295 +1,158 @@
 const appUrl = "https://friendcast-tau.vercel.app/";
 
+const heroBadges = ["相互フォロー制", "音声投稿", "音声返信", "スマホブラウザ対応"];
+
 const aboutCards = [
-  {
-    title: "親しい人だけの声のタイムライン",
-    text: "日記、近況、雑談、愚痴、考えを、届けたい相手にだけ残せます。広く拡散するより、ちゃんと伝わることを大切にします。",
-  },
-  {
-    title: "文章からでも、音声からでも",
-    text: "140文字以内の短文から始めても、最初から声で話してもOK。文字では足りない温度を、声でそっと補えます。",
-  },
-  {
-    title: "配信者とリスナーではなく、友人同士",
-    text: "番組をつくる場所ではなく、近い人へ話しかける場所。通話ほど重くなく、普通のSNSほど開かれすぎません。",
-  },
+  ["01", "声で残せる", "日記、近況、雑談、本音を声で投稿。"],
+  ["02", "届く相手を選べる", "投稿ごとに公開範囲を選択。"],
+  ["03", "会話が続く", "コメントも、音声返信もできる。"],
 ];
 
-const problems = [
-  "音声サービスは配信者感が強く、ちゃんと話さなきゃと思いやすい",
-  "公開SNSでは誰に見られるか分からず、本音を出しづらい",
-  "テキストだけでは感情や温度、人柄が伝わりにくい",
-  "数字や反応を意識すると、気軽な投稿がしにくい",
-  "友達への声の投稿を安心して残せる場所が少ない",
-];
-
-const solutions = [
-  "親しい人だけに届けられる",
-  "投稿ごとに公開範囲を選べる",
-  "雑談、愚痴、日記でも気軽に残せる",
-  "文字では足りない部分を声で補える",
-  "数字より関係性を大事にできる",
-];
-
-const comparisons = [
+const comparisonCards = [
   {
-    title: "普通のSNS",
-    tag: "Open",
-    points: [
-      "広く届きやすい",
-      "拡散や数字を意識しやすい",
-      "本音を書きづらい",
-      "テキスト中心になりやすい",
-    ],
+    label: "普通のSNS",
+    tone: "muted",
+    points: ["広がりやすい", "見られすぎる", "数字が気になる"],
   },
   {
-    title: "音声配信サービス",
-    tag: "Broadcast",
-    points: [
-      "配信者とリスナーの構図になりやすい",
-      "ちゃんと話す必要があるように感じる",
-      "番組や放送っぽくなりやすい",
-      "日常のひとことには少し重い",
-    ],
-  },
-  {
-    title: "friendcast",
-    tag: "Close friends",
-    featured: true,
-    points: [
-      "親しい人にだけ届く",
-      "声の温度が残る",
-      "日記や雑談でも投稿できる",
-      "投稿ごとに届ける相手を選べる",
-      "通話より軽く、SNSより安心",
-    ],
+    label: "friendcast",
+    tone: "featured",
+    points: ["近い人にだけ届く", "声の温度が残る", "小さな関係を大切にできる"],
   },
 ];
 
 const features = [
-  ["✍️", "テキスト投稿", "短い文章から始められるので、声にする前のメモや日記も残せます。"],
-  ["🎙️", "音声録音・投稿", "文字では伝わりにくい感情や熱量を、そのまま声で届けられます。"],
-  ["🏠", "タイムライン", "親しい人の近況や声を、落ち着いた順番で受け取れます。"],
-  ["💬", "コメント / 返信", "反応を急かさず、短い言葉で会話を続けられます。"],
-  ["↩️", "音声返信", "コメントだけでなく声で返せるから、会話の温度が残ります。"],
-  ["🔐", "公開範囲設定", "投稿ごとに、誰へ届けるかを選べます。"],
-  ["🤝", "フォロー / つながり", "友達や仲間、小さなコミュニティの距離感に合わせてつながれます。"],
-  ["👤", "プロフィール", "声や文章の積み重ねで、自分らしさを自然に伝えられます。"],
-  ["📱", "スマホブラウザ対応", "アプリを入れなくても、スマホからすぐに試せます。"],
-  ["🔗", "リンク共有 / リンクカード", "気になった記事や動画を添えて、考えや感想を共有できます。"],
-  ["🔖", "あとで聴く / しおり保存", "今すぐ聴けない声も、落ち着いたタイミングで聴き返せます。"],
-  ["⬇️", "自分の音声ダウンロード", "残した声を、自分の記録として手元にも残せます。"],
+  ["🎙️", "音声投稿", "声で日記や近況を残せる。"],
+  ["✍️", "テキスト投稿", "短く言えることは文章で。"],
+  ["↩️", "音声返信", "コメントも声で返せる。"],
+  ["🔐", "公開範囲", "届ける相手を投稿ごとに選べる。"],
+  ["🔗", "リンクカード", "URLを貼ると内容が見える。"],
+  ["🔖", "あとで聴く", "気になる声をしおり保存。"],
+  ["⬇️", "自分の音声保存", "自分の投稿は端末に残せる。"],
+  ["📱", "スマホブラウザ", "アプリなしですぐ試せる。"],
 ];
 
 const recommendItems = [
-  "友達や仲間に近況を残したい人",
-  "公開SNSで本音を出しづらい人",
-  "音声配信まではしたくないけど、声で話したい人",
-  "自分の人柄をテキスト以上に伝えたい人",
-  "小さなコミュニティで距離を縮めたい人",
-  "LINEほど直接的ではなく、SNSほど開かれすぎない場所が欲しい人",
+  "友達や仲間に近況を残したい",
+  "公開SNSでは本音を出しづらい",
+  "音声配信ほど重くしたくない",
+  "声で人柄や温度を伝えたい",
+  "小さなコミュニティでつながりたい",
+  "LINEよりゆるい場所がほしい",
 ];
 
 const scenes = [
-  ["🌙", "日記", "今日あったことを、寝る前に声で残す。"],
-  ["🌿", "近況共有", "最近考えていることや生活の変化を、親しい人にだけ話す。"],
-  ["☁️", "愚痴", "公開SNSには書きづらいモヤモヤを、聞いてほしい人だけに届ける。"],
-  ["🫖", "雑談", "用件はないけれど、今の気分や小さな出来事をゆるく共有する。"],
-  ["🙌", "自己紹介", "文字だけでは伝わらない人柄や雰囲気を、声で知ってもらう。"],
-  ["💭", "相談", "すぐ通話するほどではない悩みを、近い人に投げかける。"],
-  ["📣", "発信したいこと", "考えや気づきを、広くではなくちゃんと届く相手へ話す。"],
-  ["🧩", "問題提起", "仕事・生活・人間関係で感じた違和感を、近い人に投げかける。"],
-  ["🏡", "小さなコミュニティ", "仲間内の連絡や振り返りを、声の温度ごと共有する。"],
-];
-
-const principles = [
-  ["親密圏ファースト", "大きく広げるより、安心して話せる範囲に届けることを優先します。"],
-  ["音声ファースト", "感情、迷い、笑い、間のような人間らしさを声で残します。"],
-  ["SNS感の維持", "通話のように時間を合わせなくても、タイムラインでゆるくつながれます。"],
-  ["数字を強調しすぎない", "バズや反応の大きさより、関係性が温まる体験を大切にします。"],
-  ["投稿ごとの公開範囲", "話す内容に合わせて、届ける相手を毎回選べます。"],
-  ["自分らしさの蓄積", "声と文章が積み重なり、人柄や考えが自然に残っていきます。"],
+  ["🌙", "寝る前の日記"],
+  ["🌿", "友達への近況"],
+  ["☁️", "公開しづらい愚痴"],
+  ["💭", "小さな相談"],
+  ["🫧", "活動の裏話"],
+  ["🏡", "仲間内の共有"],
+  ["🙌", "声の自己紹介"],
+  ["🧩", "問題提起"],
 ];
 
 const steps = [
-  ["01", "Googleでログイン", "スマホブラウザから、すぐにテスター利用を始められます。"],
-  ["02", "プロフィールを作る", "名前や自己紹介を整えて、友達に見つけてもらいやすくします。"],
-  ["03", "友達を探す / 招待する", "つながりたい相手を探したり、リンクで招待したりできます。"],
-  ["04", "文章または音声で投稿", "短文からでも、録音からでも、その日の気分で残せます。"],
-  ["05", "届ける相手を選ぶ", "親しい人、フォロワー、自分だけなど、投稿ごとに範囲を選びます。"],
-  ["06", "コメントや音声返信で会話", "声が届いたあとも、言葉や声でゆるく会話が続きます。"],
+  ["1", "相互フォローでつながる", "親しい人だけのタイムラインへ。"],
+  ["2", "声か文章で投稿", "公開範囲を選んで、軽く残す。"],
+  ["3", "声で返して会話する", "聴けない声は、あとでしおりへ。"],
 ];
 
-function Wave() {
-  return (
-    <div className="wave" aria-hidden="true">
-      {Array.from({ length: 18 }).map((_, index) => (
-        <span key={index} style={{ animationDelay: `${index * 0.06}s` }} />
-      ))}
-    </div>
-  );
-}
+const Wave = ({ compact = false }: { compact?: boolean }) => (
+  <div className={compact ? "wave compact" : "wave"} aria-hidden="true">
+    {Array.from({ length: compact ? 12 : 18 }).map((_, index) => (
+      <span key={index} style={{ animationDelay: `${index * 0.07}s` }} />
+    ))}
+  </div>
+);
 
-export default function App() {
+function App() {
   return (
-    <div className="page">
-      <main className="container">
-        <section className="hero section" aria-labelledby="hero-title">
+    <main className="page">
+      <div className="orb orb-lavender" aria-hidden="true" />
+      <div className="orb orb-cyan" aria-hidden="true" />
+      <div className="orb orb-pink" aria-hidden="true" />
+
+      <div className="container">
+        <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy fade-in">
-            <div className="tester-ribbon">現在テスター募集中</div>
-            <div className="hero-banner-wrap">
+            <div className="tester-ribbon">テスター募集中</div>
+            <figure className="hero-banner-wrap">
               <img
                 className="hero-banner"
-                src={`${import.meta.env.BASE_URL}friendcast-logo-banner.jpeg`}
-                alt="friendcastのロゴバナー"
-                loading="eager"
-                decoding="async"
+                src="/CloseCast/friendcast-logo-banner.jpeg"
+                alt="friendcast ロゴ"
               />
-            </div>
-            <p className="eyebrow">友人や仲間にだけ届ける、クローズド型の音声SNS</p>
-            <h1 id="hero-title">親しい人にだけ届ける、声のタイムライン。</h1>
+            </figure>
+            <p className="brand-kicker">friendcast</p>
+            <h1 id="hero-title">
+              親しい人にだけ届ける、
+              <br />
+              声のタイムライン。
+            </h1>
             <p className="lead">
-              friendcastは、友人や仲間にだけ声や文章を届けられる場所です。日記、近況、雑談、愚痴、考えを、文字では伝わりきらない温度とともに残せます。
-            </p>
-            <p className="lead-sub">
-              バズるためではなく、声で関係性を温めるために。通話ほど重くなく、普通のSNSほど開かれすぎない、安心できるタイムラインです。
+              バズらない。広がりすぎない。
+              <br />
+              でも、大事な人にはちゃんと届く。
             </p>
             <div className="badge-row" aria-label="friendcastの特徴">
-              {["声が届く相手を選べる", "文章からでも音声からでも", "音声返信", "しおり保存"].map((badge) => (
-                <span key={badge} className="badge">
+              {heroBadges.map((badge) => (
+                <span className="badge" key={badge}>
                   {badge}
                 </span>
               ))}
             </div>
             <div className="cta-row">
               <a
-                aria-label="friendcastをテスターとして使ってみる（新しいタブで開きます）"
                 className="btn primary"
                 href={appUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                aria-label="friendcastをテスターとして使ってみる"
               >
                 テスターとして使ってみる
               </a>
-              <a
-                aria-label="friendcastとは何かを読む（説明セクションへ移動します）"
-                className="btn ghost"
-                href="#about"
-              >
+              <a className="btn ghost" href="#about" aria-label="friendcastとはセクションへ移動">
                 friendcastとは
               </a>
             </div>
           </div>
 
-          <div className="hero-visual" aria-label="friendcastの投稿画面イメージ">
-            <div className="phone-mock">
-              <div className="mock-top">
-                <span className="mock-brand">friendcast</span>
-                <span className="mock-status">親しい友達</span>
-              </div>
-              <article className="post-card">
-                <div className="user-row">
-                  <div className="avatar" />
-                  <div>
-                    <strong>mika</strong>
-                    <p>今日 22:14 ・ 公開範囲: 仲間だけ</p>
-                  </div>
-                </div>
-                <p className="post-text">今日は少しだけ声で日記。文字にすると軽く見えそうな気持ちも、そのまま残しておくね。</p>
-                <div className="link-card">
-                  <span>🔗 Link card</span>
-                  <strong>最近考えていたことのメモ</strong>
-                </div>
-                <div className="voice-card">
-                  <div className="player-row">
-                    <button aria-label="再生" className="play" type="button">▶</button>
-                    <Wave />
-                  </div>
-                  <div className="player-tools">
-                    <button type="button">-15秒</button>
-                    <span>1:26</span>
-                    <button type="button">+15秒</button>
-                    <strong>1.2x</strong>
-                  </div>
-                </div>
-                <div className="actions" aria-label="投稿アクション">
-                  <span>♡ 12</span>
-                  <span>💬 3</span>
-                  <span>🔖</span>
-                  <span className="visibility-pill">友達だけ</span>
-                </div>
-              </article>
-              <article className="post-card mini-card">
-                <span className="reply-label">↩ 音声返信</span>
-                <div className="reply-mini-player">
-                  <span className="mini-play">▶</span>
-                  <Wave />
-                </div>
-              </article>
-              <nav className="bottom-nav" aria-label="アプリ下部ナビゲーションのイメージ">
-                <span>🏠 Home</span>
-                <span>🔍 Search</span>
-                <span className="plus">＋</span>
-                <span>🔖 Save</span>
-                <span>👤 Me</span>
-              </nav>
-            </div>
+          <div className="hero-visual fade-in" aria-label="friendcastのタイムライン画面イメージ">
+            <div className="floating-note note-one">親しい人にだけ</div>
+            <div className="floating-note note-two">声で返信</div>
+            <PhoneMock />
           </div>
         </section>
 
-        <section id="about" className="section" aria-labelledby="about-title">
+        <section className="section about-section" id="about" aria-labelledby="about-title">
           <div className="section-head centered">
-            <p className="eyebrow">About</p>
-            <h2 id="about-title">friendcastとは</h2>
-            <p>広く届けるためではなく、ちゃんと届けたい人に声を残す場所。</p>
+            <span className="eyebrow">What is friendcast?</span>
+            <h2 id="about-title">通話より軽く、SNSより安心。</h2>
+            <p>文字では伝わりきらない温度を、声で残すクローズド音声SNSです。</p>
           </div>
           <div className="about-grid">
-            {aboutCards.map((card) => (
-              <article className="card about-card" key={card.title}>
-                <h3>{card.title}</h3>
-                <p>{card.text}</p>
+            {aboutCards.map(([num, title, text]) => (
+              <article className="card about-card" key={title}>
+                <span className="card-number">{num}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="section split-section" aria-labelledby="why-title">
+        <section className="section comparison-section" aria-labelledby="comparison-title">
           <div className="section-head">
-            <p className="eyebrow">Why</p>
-            <h2 id="why-title">なぜfriendcastが必要なのか</h2>
-            <p>声で話したい瞬間はある。でも、公開SNSや音声配信では少し大げさに感じることがあります。</p>
-          </div>
-          <div className="problem-solution-grid">
-            <article className="card list-card problem-card">
-              <span className="card-label">よくある悩み</span>
-              <h3>話したいのに、話しにくい</h3>
-              <ul>
-                {problems.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </article>
-            <article className="card list-card solution-card">
-              <span className="card-label positive">friendcastなら</span>
-              <h3>近い人へ、ちょうどよく届く</h3>
-              <ul>
-                {solutions.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section className="section" aria-labelledby="compare-title">
-          <div className="section-head centered">
-            <p className="eyebrow">Compare</p>
-            <h2 id="compare-title">普通のSNSや音声配信との違い</h2>
-            <p>friendcastは、音声配信サービスではなく、友人同士のクローズド音声SNSです。</p>
+            <span className="eyebrow">Difference</span>
+            <h2 id="comparison-title">広げるより、ちゃんと届く。</h2>
           </div>
           <div className="comparison-grid">
-            {comparisons.map((item) => (
-              <article className={`card comparison-card ${item.featured ? "featured" : ""}`} key={item.title}>
-                <span className="card-label">{item.tag}</span>
-                <h3>{item.title}</h3>
+            {comparisonCards.map((card) => (
+              <article className={`card comparison-card ${card.tone}`} key={card.label}>
+                <span className="card-label">{card.label}</span>
                 <ul>
-                  {item.points.map((point) => <li key={point}>{point}</li>)}
+                  {card.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
                 </ul>
               </article>
             ))}
@@ -297,15 +160,16 @@ export default function App() {
         </section>
 
         <section className="section" aria-labelledby="features-title">
-          <div className="section-head">
-            <p className="eyebrow">Features</p>
-            <h2 id="features-title">できること</h2>
-            <p>機能は、声で関係性を温めるために。投稿、返信、保存、公開範囲まで、親しい人とのやりとりを支えます。</p>
+          <div className="section-head centered">
+            <span className="eyebrow">Features</span>
+            <h2 id="features-title">できることは、必要な分だけ。</h2>
           </div>
           <div className="feature-grid">
             {features.map(([icon, title, text]) => (
               <article className="card feature-card" key={title}>
-                <span className="feature-icon">{icon}</span>
+                <span className="feature-icon" aria-hidden="true">
+                  {icon}
+                </span>
                 <div>
                   <h3>{title}</h3>
                   <p>{text}</p>
@@ -315,65 +179,65 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section recommend-section" aria-labelledby="recommend-title">
+        <section className="section reply-showcase" aria-labelledby="reply-title">
+          <div className="reply-copy">
+            <span className="eyebrow light">Voice reply</span>
+            <h2 id="reply-title">返信も、声で返せる。</h2>
+            <p>
+              短いコメントでも、声のひとことでも。気持ちの温度を落とさず、会話が続きます。
+            </p>
+          </div>
+          <div className="reply-panel" aria-label="音声返信の画面イメージ">
+            <div className="reply-bubble">「今日の話、すごく分かる」</div>
+            <div className="reply-player">
+              <button type="button" aria-label="音声返信を再生" className="play mini-play">
+                ▶
+              </button>
+              <Wave compact />
+              <span>0:18</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" aria-labelledby="recommend-title">
           <div className="section-head centered">
-            <p className="eyebrow">For you</p>
-            <h2 id="recommend-title">こんな人におすすめ</h2>
+            <span className="eyebrow">For you</span>
+            <h2 id="recommend-title">こんな人におすすめ。</h2>
           </div>
           <div className="recommend-grid">
             {recommendItems.map((item) => (
-              <article className="card recommend-card" key={item}>
-                <span className="check-icon">✓</span>
+              <div className="card recommend-card" key={item}>
+                <span className="check-icon" aria-hidden="true">✓</span>
                 <p>{item}</p>
-              </article>
+              </div>
             ))}
           </div>
         </section>
 
-        <section className="section" aria-labelledby="scene-title">
+        <section className="section" aria-labelledby="scenes-title">
           <div className="section-head centered">
-            <p className="eyebrow">Scenes</p>
-            <h2 id="scene-title">利用シーン</h2>
-            <p>大きな発信ではなく、近い人にだけ残したい声や考えに。</p>
+            <span className="eyebrow">Scenes</span>
+            <h2 id="scenes-title">使い道は、日常のすぐそばに。</h2>
           </div>
           <div className="scene-grid">
-            {scenes.map(([icon, title, text]) => (
+            {scenes.map(([icon, title]) => (
               <article className="card scene-card" key={title}>
-                <span className="scene-icon">{icon}</span>
-                <span className="scene-label">Voice note</span>
+                <span className="scene-icon" aria-hidden="true">{icon}</span>
                 <h3>{title}</h3>
-                <p>{text}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="section principle-section" aria-labelledby="principle-title">
-          <div className="section-head centered">
-            <p className="eyebrow">Principles</p>
-            <h2 id="principle-title">声で関係性を温めるために</h2>
-            <p>friendcastは、バズるためのSNSではありません。AI時代だからこそ、感情、温度感、迷い、笑い、間のような人間らしさを大切にします。</p>
-          </div>
-          <div className="principle-grid">
-            {principles.map(([title, text]) => (
-              <article className="card principle-card" key={title}>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="how-to-use" className="section" aria-labelledby="steps-title">
+        <section className="section steps-section" aria-labelledby="steps-title">
           <div className="section-head">
-            <p className="eyebrow">How to use</p>
-            <h2 id="steps-title">使い方の流れ</h2>
-            <p>最初の投稿までを、スマホで迷わず進められるシンプルな導線にしています。</p>
+            <span className="eyebrow">How to use</span>
+            <h2 id="steps-title">3ステップで、ゆるくつながる。</h2>
           </div>
-          <div className="steps">
+          <div className="step-grid">
             {steps.map(([num, title, text]) => (
-              <article className="step-card" key={num}>
-                <span>{num}</span>
+              <article className="card step-card" key={title}>
+                <span className="step-num">{num}</span>
                 <div>
                   <h3>{title}</h3>
                   <p>{text}</p>
@@ -383,35 +247,106 @@ export default function App() {
           </div>
         </section>
 
+        <section className="section update-note" aria-label="テスト運用のお知らせ">
+          <p>
+            friendcastは現在テスト運用中です。フィードバックを受けながら、録音編集や音声アップロードなどを改善しています。
+          </p>
+        </section>
+
         <section className="section final-cta" aria-labelledby="final-cta-title">
-          <div className="card cta-card">
-            <p className="eyebrow">Join beta</p>
-            <h2 id="final-cta-title">声で残す、親しい人だけのタイムラインを始めよう。</h2>
-            <p>日記も、近況も、雑談も、考えも。ちゃんと届けたい相手にだけ、あなたの声の温度ごと残せます。</p>
-            <div className="cta-row center">
+          <div className="cta-card card">
+            <span className="tester-ribbon">テスター募集中</span>
+            <h2 id="final-cta-title">あなたの声を、届く人へ。</h2>
+            <p>親しい人にだけ、声や文章を残せる場所を試してみませんか。</p>
+            <div className="cta-row centered-row">
               <a
-                aria-label="friendcastをテスターとして使ってみる（新しいタブで開きます）"
                 className="btn primary"
                 href={appUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                aria-label="friendcastをテスターとして使ってみる"
               >
                 テスターとして使ってみる
               </a>
-              <a
-                aria-label="friendcastの使い方を見る（使い方セクションへ移動します）"
-                className="btn ghost light"
-                href="#how-to-use"
-              >
-                使い方を見る
+              <a className="btn ghost" href="#about" aria-label="friendcastとはセクションへ移動">
+                friendcastとは
               </a>
             </div>
           </div>
         </section>
-      </main>
-      <footer className="footer">
-        <p>© 2026 friendcast</p>
-      </footer>
+
+        <footer className="footer">
+          <span>friendcast</span>
+          <span>親しい人にだけ届ける、声のタイムライン</span>
+        </footer>
+      </div>
+    </main>
+  );
+}
+
+function PhoneMock() {
+  return (
+    <div className="phone-shell">
+      <div className="phone-mock">
+        <header className="mock-top">
+          <strong>friendcast</strong>
+          <span className="mock-status">相互フォロー</span>
+        </header>
+
+        <article className="post-card mini-card">
+          <div className="user-row">
+            <span className="avatar" aria-hidden="true" />
+            <div>
+              <strong>mika</strong>
+              <p>親しい友達 · 2分前</p>
+            </div>
+            <span className="visibility-pill">友達まで</span>
+          </div>
+          <p className="post-text">寝る前に、今日のうれしかったことだけ。</p>
+          <div className="voice-card">
+            <div className="player-row">
+              <button type="button" aria-label="音声投稿を再生" className="play">
+                ▶
+              </button>
+              <Wave />
+            </div>
+            <div className="player-tools" aria-label="音声プレイヤー操作">
+              <button type="button">-15秒</button>
+              <span>0:42</span>
+              <button type="button">+15秒</button>
+              <strong>1.2x</strong>
+            </div>
+          </div>
+          <a className="link-card" href={appUrl} aria-label="friendcastのリンクカード例">
+            <span>Link card</span>
+            今日のメモをあとで見る
+          </a>
+          <div className="actions" aria-label="投稿へのアクション">
+            <span>♡ 12</span>
+            <span>💬 4</span>
+            <span>🔖 しおり</span>
+          </div>
+        </article>
+
+        <article className="post-card reply-card">
+          <span className="reply-label">音声返信</span>
+          <div className="reply-mini-player">
+            <button type="button" aria-label="音声返信を再生" className="mini-play">
+              ▶
+            </button>
+            <Wave compact />
+            <span>0:11</span>
+          </div>
+        </article>
+
+        <nav className="bottom-nav" aria-label="friendcast下部ナビゲーションのイメージ">
+          <span>Home</span>
+          <span>Search</span>
+          <span className="plus">Post</span>
+          <span>Saved</span>
+          <span>Me</span>
+        </nav>
+      </div>
     </div>
   );
 }
+
+export default App;
